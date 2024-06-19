@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "393167181575",
+    "project_id": "catime-ccd4f",
+    "storage_bucket": "catime-ccd4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393167181575:android:2330009ff6dee84f9c57a2",
+        "android_client_info": {
+          "package_name": "com.example.pomodoro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtgpjPzcGY8-FiNOhMnxF7CTrul7uG3zw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
