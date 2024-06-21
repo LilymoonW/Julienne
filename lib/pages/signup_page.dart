@@ -1,21 +1,74 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pomodoro/pages/timer_page.dart';
 import 'package:pomodoro/utilities/my_button2.dart';
 import 'package:pomodoro/utilities/my_divider.dart';
 import 'package:pomodoro/utilities/my_textfield.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final _passwordController = TextEditingController();
-    final _emailController = TextEditingController();
-    final _nameController = TextEditingController();
-    final _passwordConfirmController = TextEditingController();
+  State<SignupPage> createState() => _SignupPageState();
+}
 
+class _SignupPageState extends State<SignupPage> {
+  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _passwordConfirmController = TextEditingController();
+
+  void signUp() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF2D5F32))),
+          );
+        });
+
+    try {
+      if (_passwordController.text != _passwordConfirmController.text) {
+        throw Exception('Password-Not-Equal');
+      }
+
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+      Navigator.pop(context);
+      
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TimerPage()),
+      );
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      errorMsg(e.code);
+    }
+  }
+
+  void errorMsg(String msg) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Color(0xFF2D5F32),
+            title: Center(
+                child: Text(
+              msg,
+              style: TextStyle(color: Colors.white),
+            )),
+          );
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFFAF9F6),
@@ -98,7 +151,7 @@ class SignupPage extends StatelessWidget {
                       text: 'Sign Up',
                       textColor: Colors.white,
                       buttonColor: Color(0xFF88A28B),
-                      onPressed: () {},
+                      onPressed: signUp,
                       width: 150,
                       height: 50)
                 ],

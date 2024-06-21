@@ -37,38 +37,23 @@ class _LoginPageState extends State<LoginPage> {
       //if user is not found.
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
-      if (e.code == 'user-not-found') {
-        //displays error message
-        print('user is wrong');
-        //if password is wrong
-      } else if (e.code == 'wrong-password') {
-        //displays error message
-        print('password is wrong');
-      }
+      errorMsg(e.code);
     }
   }
 
 // displays error messages
-  void errorMsgUser() {
+  void errorMsg(String msg) {
     showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('No user found for that email.'),
+            backgroundColor: Color(0xFF2D5F32),
+            title: Center(child: Text(msg, style: TextStyle(color: Colors.white),)),
           );
         });
   }
 
   // displays error messages
-  void errorMsgPassword() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Wrong password provided for that user.'),
-          );
-        });
-  }
 
   @override
   Widget build(BuildContext context) {
