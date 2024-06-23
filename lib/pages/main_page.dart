@@ -46,7 +46,6 @@ class _MainPageState extends State<MainPage> {
               ),
 
               //info inside container
-
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -93,42 +92,62 @@ class _MainPageState extends State<MainPage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       alignment: AlignmentDirectional(0, 0),
-                      child: Column(children: [
-                        // the name of the goal
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
-                          child: Container(
-                            width: 200,
-                            height: 50,
-                            child: Text(
-                              'Study for midterms',
-                              softWrap: true, // Allow text to wrap
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.redHatText(
-                                color: Color(0xFF626B98),
-                                letterSpacing: 0,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // the name of the goal
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12, 12, 12, 12),
+                              child: Text(
+                                'Study for midterms',
+                                softWrap: true, // Allow text to wrap
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.redHatText(
+                                  color: Color(0xFF626B98),
+                                  letterSpacing: 0,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
-                          ),
-                        ),
+                            //progress bar
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 2),
+                              child: LinearProgressIndicator(
+                                value: 0.5,
+                                minHeight:
+                                    15, // Optional: Set minimum height for the progress indicator
+                                backgroundColor: Colors.grey[
+                                    300], // Optional: Set background color
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Color(0xFF87A687) // medium green
+                                    ),
+                              ),
+                            ),
 
-                        //progress bar
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(2, 0, 10, 2),
-                          child: LinearProgressIndicator(
-                            value: 0.5,
-                            minHeight:
-                                10, // Optional: Set minimum height for the progress indicator
-                            backgroundColor: Colors
-                                .grey[200], // Optional: Set background color
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.blue),
-                          ),
-                        )
-                      ]),
+                            // progress text
+
+                            // Generated code for this Text Widget...
+                            Align(
+                              alignment: AlignmentDirectional(1, 0),
+                              child: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 10, 4),
+                                child: Text(
+                                  '50%',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.redHatText(
+                                    color:  Color(0xFF2D5F32), // dark green
+                                    fontSize: 10,
+                                    letterSpacing: 0,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ]),
                     ),
                   ),
                 ],
@@ -140,3 +159,5 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
+
+
