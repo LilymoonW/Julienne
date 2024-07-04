@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pomodoro/pages/main_page.dart';
 import 'package:pomodoro/utilities/my_button.dart';
 
 class TimerPage extends StatefulWidget {
@@ -60,8 +61,7 @@ class _TimerPageState extends State<TimerPage> {
                             // Adjust index to start from 1
                             int displayIndex = index + 1;
                             // Return text widget displaying the index
-                            return Center(
-                                child: Text('$displayIndex' '  hrs'));
+                            return Center(child: Text('$displayIndex' '  hrs'));
                           },
                         ),
                       ),
@@ -124,6 +124,15 @@ class _TimerPageState extends State<TimerPage> {
               color: const Color.fromARGB(255, 42, 61, 77),
               onPressed: () {
                 _setTime();
+              }),
+          MyButton(
+              name: " Home Page ",
+              color: const Color.fromARGB(255, 42, 61, 77),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainPage()),
+                );
               }),
         ]),
       ),

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pomodoro/utilities/my_button2.dart';
 import 'package:pomodoro/utilities/my_divider.dart';
 import 'package:pomodoro/utilities/my_textfield.dart';
+import 'package:pomodoro/pages/timer_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -34,6 +35,11 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text, password: _passwordController.text);
       Navigator.pop(context);
+      //moves user to new page
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TimerPage()),
+      );
       //if user is not found.
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
