@@ -19,22 +19,8 @@ class HometwoWidget extends StatefulWidget {
 }
 
 class _HometwoWidgetState extends State<HometwoWidget> {
-  late HometwoModel _model;
 
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  @override
-  void initState() {
-    super.initState();
-    _model = createModel(context, () => HometwoModel());
-  }
-
-  @override
-  void dispose() {
-    _model.dispose();
-
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +30,7 @@ class _HometwoWidgetState extends State<HometwoWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: ,
         drawer: Drawer(
           elevation: 16,
         ),
