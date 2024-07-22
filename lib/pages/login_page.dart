@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,8 +49,8 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: Color(0xFF2D5F32),
-            title: Center(child: Text(msg, style: TextStyle(color: Colors.white),)),
+            backgroundColor: const Color(0xFF2D5F32),
+            title: Center(child: Text(msg, style: const TextStyle(color: Colors.white),)),
           );
         });
   }
@@ -60,9 +62,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       //app bar with back feature
       appBar: AppBar(
-        backgroundColor: Color(0xFFFAF9F6),
+        backgroundColor: const Color(0xFFFAF9F6),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,
+          icon: const Icon(Icons.arrow_back,
               color: Color(0xFF2D5F32), size: 30, weight: 4),
           onPressed: () {
             Navigator.of(context)
@@ -72,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
 
       //the screen
-      backgroundColor: Color(0xFFFAF9F6),
+      backgroundColor: const Color(0xFFFAF9F6),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: SafeArea(
@@ -84,12 +86,12 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 25),
                   child: Align(
-                    alignment: AlignmentDirectional(-1, 0),
+                    alignment: const AlignmentDirectional(-1, 0),
                     child: Text(
                       'Log In.',
                       textAlign: TextAlign.start,
                       style: GoogleFonts.peddana(
-                        color: Color(0xFF2D5F32),
+                        color: const Color(0xFF2D5F32),
                         fontSize: 85,
                         letterSpacing: 2,
                       ),
@@ -151,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                     MyButton2(
                         text: 'Log in',
                         textColor: Colors.white,
-                        buttonColor: Color(0xFF88A28B),
+                        buttonColor: const Color(0xFF88A28B),
                         onPressed: signUserIn,
                         width: 150,
                         height: 50)
@@ -162,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 25),
 
                 //Divider and text
-                MyDivider(),
+                const MyDivider(),
 
                 //gap
                 //const SizedBox(height: 25),

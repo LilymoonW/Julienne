@@ -9,22 +9,22 @@ class DefaultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAF9F6),
+      backgroundColor: const Color(0xFFFAF9F6),
       body: Padding(
         padding: const EdgeInsets.only(top: 50, bottom: 50),
         child: Column(
           children: [
             //title
             Align(
-              alignment: AlignmentDirectional(0, 0),
+              alignment: const AlignmentDirectional(0, 0),
               //title
               child: Padding(
-                padding: EdgeInsets.only(left: 25, top: 75, right: 25),
+                padding: const EdgeInsets.only(left: 25, top: 75, right: 25),
                 child: Text(
                   'Julienne.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.peddana(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       color: Color(0xFF2D5F32),
                       fontSize: 110,
                       letterSpacing: 2,
@@ -36,7 +36,7 @@ class DefaultPage extends StatelessWidget {
 
             //Mascot cat
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(25, 25, 25, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(25, 25, 25, 0),
               child: Image.asset(
                 'lib/images/chimaek.png',
                 width: 250,
@@ -49,11 +49,11 @@ class DefaultPage extends StatelessWidget {
               child: CustomRoundedButton(
                 text: 'Log In',
                 textColor: Colors.white,
-                buttonColor: Color(0xFF88A28B),
+                buttonColor: const Color(0xFF88A28B),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
                   );
                 },
               ),
@@ -63,12 +63,12 @@ class DefaultPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 15),
               child: CustomRoundedButton(
                   text: 'Sign Up',
-                  textColor: Color(0xFF77917A),
-                  buttonColor: Color(0xFFD9E2DA),
+                  textColor: const Color(0xFF77917A),
+                  buttonColor: const Color(0xFFD9E2DA),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignupPage()),
+                      MaterialPageRoute(builder: (context) => const SignupPage()),
                     );
                   }),
             ),
@@ -87,12 +87,12 @@ class CustomRoundedButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const CustomRoundedButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.textColor,
     required this.buttonColor,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,7 @@ class CustomRoundedButton extends StatelessWidget {
         ),
         //sets color of button
         backgroundColor: buttonColor,
-        minimumSize: Size(300, 50),
+        minimumSize: const Size(300, 50),
       ),
 
       //formates the text of button

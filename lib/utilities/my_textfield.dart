@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyTextField extends StatelessWidget {
@@ -27,12 +25,12 @@ class MyTextField extends StatelessWidget {
         labelText: hintText,
         //what color is the hint text
         labelStyle: GoogleFonts.redHatMono(
-          color: Color(0xFF87A687),
+          color: const Color(0xFF87A687),
           letterSpacing: 0,
         ),
         //normally green
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color(0xFF88A28B),
             width: 2,
           ),
@@ -41,7 +39,7 @@ class MyTextField extends StatelessWidget {
     
         //clicked on the color will be darker
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color(0xFF2D5F32),
             width: 2,
           ),
@@ -51,17 +49,17 @@ class MyTextField extends StatelessWidget {
         //color of background
         filled: true,
         fillColor: Colors.white,
-        contentPadding: EdgeInsets.all(24),
+        contentPadding: const EdgeInsets.all(24),
         hintText: hintText,
       ),
       //style of text
       style: GoogleFonts.redHatMono(
-        color: Color(0xFF2D5F32),
+        color: const Color(0xFF2D5F32),
         letterSpacing: 0,
       ),
       //Type of input
       keyboardType: TextInputType.name,
-      cursorColor: Color(0xFF2D5F32),
+      cursorColor: const Color(0xFF2D5F32),
      /* inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]'))
       ],
