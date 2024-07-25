@@ -45,11 +45,16 @@ class _SignupPageState extends State<SignupPage> {
       );
 
    
-
       // add user details
-      await DatabaseService(uid: userCredential.user!.uid);
+      
+      await DatabaseService(uid: userCredential.user!.uid).updateUserData(
+                      _nameController.text.trim(),
+                      _emailController.text.trim(),
+                    );
+
       Navigator.pop(context);
      
+
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => TimerPage()),
@@ -61,9 +66,6 @@ class _SignupPageState extends State<SignupPage> {
       errorMsg(e.code);
     }
   }
-
-
-
 
 
   void errorMsg(String msg) {
