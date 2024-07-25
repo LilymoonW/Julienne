@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pomodoro/database.dart';
 import 'package:pomodoro/pages/timer_page.dart';
 import 'package:pomodoro/utilities/my_button2.dart';
 import 'package:pomodoro/utilities/my_divider.dart';
@@ -21,7 +23,7 @@ class _SignupPageState extends State<SignupPage> {
   final _nameController = TextEditingController();
   final _passwordConfirmController = TextEditingController();
 
-  void signUp() async {
+  Future signUp() async {
     showDialog(
         context: context,
         builder: (context) {
@@ -34,23 +36,37 @@ class _SignupPageState extends State<SignupPage> {
     try {
       if (_passwordController.text != _passwordConfirmController.text) {
         throw Exception('Password-Not-Equal');
-      }
-
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
+      } 
+      //creates user
+    
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
       );
-      Navigator.pop(context);
+
+   
+      // add user details
       
+      await DatabaseService(uid: userCredential.user!.uid).updateUserData(
+                      _nameController.text.trim(),
+                      _emailController.text.trim(),
+                    );
+
+      Navigator.pop(context);
+     
+
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => TimerPage()),
       );
+    
+    
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       errorMsg(e.code);
     }
   }
+
 
   void errorMsg(String msg) {
     showDialog(
