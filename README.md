@@ -8,12 +8,15 @@ Brainstormed functions for app and prototyped first design on figma.
 Created a data model organizing data stored and relationships between eachother.
 utilized firebase for backend organization.
 
+
 ### Features
 
 
 ### UI Demostration 
 
 Screenshots
+![Screenshot 2024-08-24 173354](https://github.com/user-attachments/assets/89d2a820-8916-4ae7-b9a6-fd0a2c9534ad)
+
 
 ## Getting Started
 
